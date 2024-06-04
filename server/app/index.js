@@ -4,6 +4,7 @@ const app = express();
 require("dotenv").config();
 const router = express.Router();
 const cors = require("cors");
+const parser = express.json();
 
 const port = process.env.PORT || 3000;
 
@@ -21,4 +22,5 @@ const UsersRoute = require("./routes/userRoutes");
 
 // Using Routes
 router.use("/signup", UsersRoute);
+
 module.exports = { port, app, express, router };
