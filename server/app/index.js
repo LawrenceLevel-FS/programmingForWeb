@@ -4,7 +4,17 @@ const app = express();
 require("dotenv").config();
 const router = express.Router();
 const cors = require("cors");
-const parser = express.json();
+const connectDB = require("./db/config");
+const bodyParser = require("body-parser");
+
+// Middleware
+app.use(express.json());
+app.use(morgan("dev"));
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Database
+connectDB();
 
 const port = process.env.PORT || 3000;
 
